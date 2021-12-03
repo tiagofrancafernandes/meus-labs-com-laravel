@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.page')
+
+@push('styles')
+@endpush
 
 @section('content')
 <div class="container">

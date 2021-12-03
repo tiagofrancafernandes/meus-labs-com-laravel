@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dac9e772af123ce2998ddb1f9d45e8f4",
+    "content-hash": "0262886b0d5cec59c864d8f5a0469e88",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3051,6 +3051,58 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "rezaamini-ir/laravel-easyblade",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rezaamini-ir/laravel-easyblade.git",
+                "reference": "7807a1aa4bc135607ea6f053b941958df7d084b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rezaamini-ir/laravel-easyblade/zipball/7807a1aa4bc135607ea6f053b941958df7d084b8",
+                "reference": "7807a1aa4bc135607ea6f053b941958df7d084b8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.7|^6.0|^7.0|^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^5.7|^6.0|^7.0|^8.0",
+                "orchestra/testbench": "~3.7|^4.0|^5.0|^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "EasyBlade\\EasyBladeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EasyBlade\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Reza Amini",
+                    "email": "rezaaminiroyal@gmail.com"
+                }
+            ],
+            "description": "Create a easier & readable Blade view with EasyBlade",
+            "support": {
+                "issues": "https://github.com/rezaamini-ir/laravel-easyblade/issues",
+                "source": "https://github.com/rezaamini-ir/laravel-easyblade/tree/0.3.0"
+            },
+            "time": "2021-08-14T14:46:04+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
