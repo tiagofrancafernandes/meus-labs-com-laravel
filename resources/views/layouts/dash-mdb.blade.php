@@ -74,6 +74,11 @@
         body::-webkit-scrollbar-thumb:hover {
             background: #1669f1;
         }
+
+        [logo-part="logo-main"][dark="true"]
+        {
+            background-color: rgb(41, 41, 41);
+        }
     </style>
     <style>
         body {
@@ -223,8 +228,11 @@
         </nav>
         <!-- Sidebar -->
 
+        @php
+            $theme_dark = false;
+        @endphp
         <!-- Navbar -->
-        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-{{ $theme_dark ? 'dark' : 'light' }} bg-{{ $theme_dark ? 'dark' : 'white' }} fixed-top">
             <!-- Container wrapper -->
             <div class="container-fluid">
                 <!-- Toggle button -->
@@ -235,15 +243,14 @@
 
                 <!-- Brand -->
                 <a class="navbar-brand" href="#">
-                    <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" alt="" loading="lazy"
-                        height="25">
+                    <x-logo-icon-code dark="{{ $theme_dark ? 'true' : 'false' }}"/>
                 </a>
-                <!-- Search form -->
+                {{-- <!-- Search form -->
                 <form class="d-none d-md-flex input-group w-auto my-auto">
                     <input autocomplete="off" type="search" class="form-control rounded"
                         placeholder="Search (ctrl + &quot;/&quot; to focus)" style="min-width: 225px">
                     <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
-                </form>
+                </form> --}}
 
                 <!-- Right links -->
                 <ul class="navbar-nav ms-auto d-flex flex-row">
