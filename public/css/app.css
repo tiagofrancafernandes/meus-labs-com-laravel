@@ -12718,7 +12718,7 @@ i.flag::before {
   width: 16px;
   height: 11px;
   content: "";
-  background: url("https://mdbootstrap.com/img/svg/flags.png") no-repeat -108px -1976px;
+  background: url(../images/flags.png?99f63ae7a743f21ab30847ed06a698d9) no-repeat -108px -1976px;
 }
 i.flag-ad:before, i.flag-andorra:before {
   background-position: 0 0 !important;
@@ -15076,7 +15076,7 @@ i.flag:not(.icon):before {
   width: 16px;
   height: 11px;
   content: "";
-  background: url("https://mdbootstrap.com/img/svg/flags.png") no-repeat -108px -1976px;
+  background: url(../images/flags.png?99f63ae7a743f21ab30847ed06a698d9) no-repeat -108px -1976px;
 }
 
 /* Flag Sprite Based On http://www.famfamfam.com/lab/icons/flags/ */

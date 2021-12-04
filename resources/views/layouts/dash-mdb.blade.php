@@ -10,8 +10,10 @@
     <base target="_parent">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap">
+    {{-- <link rel="stylesheet"
+        href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb5/3.10.1/compiled.min.css"> --}}
     <link rel="stylesheet"
-        href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb5/3.10.1/compiled.min.css">
+        href="@asset('css/app.css')">
     <style>
         body {
             scroll-behavior: smooth;
@@ -328,7 +330,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
                             id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle"
+                            <img src="@asset('images/mdb-avatar.jpg')" class="rounded-circle"
                                 alt="" loading="lazy" height="22">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
@@ -822,9 +824,8 @@
         </div>
     </main>
     <!--Main layout-->
-    <script type="text/javascript"
-        src="https://mdbootstrap.com/api/snippets/static/download/MDB5-Free_3.10.1/js/mdb.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="@asset('js/app.js')"></script>
+    <script type="text/javascript" src="@asset('vendor/chart.js/2.9.4/dist/Chart.min.js')"></script>
     <script type="text/javascript">
         {// Graph
         var ctx = document.getElementById("myChart");
