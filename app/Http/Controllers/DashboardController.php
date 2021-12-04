@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public static function routes()
     {
-        Route::get('/dashboard', [self::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [self::class, 'index'])->name('dashboard.index');
     }
 
     /**
