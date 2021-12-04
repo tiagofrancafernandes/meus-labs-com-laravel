@@ -1,2 +1,9 @@
 @import "../../public/material-bs5-free/src/scss/mdb.free.scss";
 // @import "./all.css";
+
+
+// Font-Awesome - https://dev.to/dendihandian/adding-font-awesome-to-laravel-the-laravel-mix-way-4ndj
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
