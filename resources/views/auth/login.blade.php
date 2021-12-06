@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.page')
+
+@push('styles')
+<style>
+    main { padding: 0 !important; }
+</style>
+@endpush
 
 @section('content')
 <div class="container">
@@ -8,6 +14,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    @if (session('login-form'))
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -65,6 +72,36 @@
                             </div>
                         </div>
                     </form>
+                    @else
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="d-flex justify-content-center p-md-1">
+                                <div class="d-flex flex-row">
+                                    <div class="align-self-center">
+                                        <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="@route('social_login.google_login')">
+                                            <img src="@asset('images/google-logo.png')"> Login com sua conta @pontomais.com.br
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="d-flex justify-content-center p-md-1">
+                                <div class="d-flex flex-row">
+                                    <div class="align-self-center">
+                                        <a
+                                            class="btn btn-lg btn-info"
+                                            href="#" role="button">
+                                            <i class="fa fa-life-ring" aria-hidden="true"></i>
+                                            Precisa de ajuda?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

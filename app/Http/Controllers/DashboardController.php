@@ -12,6 +12,11 @@ class DashboardController extends Controller
         Route::get('/dashboard', [self::class, 'index'])->name('dashboard.index');
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * function index
      *

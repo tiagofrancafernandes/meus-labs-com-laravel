@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.dash-mdb')
 
 @push('styles')
 @endpush
