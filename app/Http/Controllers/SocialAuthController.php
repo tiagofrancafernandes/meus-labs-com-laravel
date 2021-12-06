@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Route;
+use Str;
 
 class SocialAuthController extends Controller
 {
@@ -38,35 +40,36 @@ class SocialAuthController extends Controller
      */
     public function googleLoginCallback(Request $request)
     {
-        $user = Socialite::driver('google')->stateless()->user();
-        dd($user);
-        /*
-        Laravel\Socialite\Two\User {
-            +token: "...."
-            +refreshToken: null
-            +expiresIn: 3594
-            +id: "114623339790769105709"
-            +nickname: null
-            +name: "Tiago França Fernandes"
-            +email: "tiago.fernandes@pontomais.com.br"
-            +avatar: "https://lh3.googleusercontent.com/a-/AOh14GhfrhDq7ZZXKh7uOpT8WrklbHKpXDx39JljtnV2=s96-c"
-            +user: array:13 [▶
-                "sub" => "114623339790769105709"
-                "name" => "Tiago França Fernandes"
-                "given_name" => "Tiago França"
-                "family_name" => "Fernandes"
-                "profile" => "https://plus.google.com/114623339790769105709"
-                "picture" => "https://lh3.googleusercontent.com/a-/AOh14GhfrhDq7ZZXKh7uOpT8WrklbHKpXDx39JljtnV2=s96-c"
-                "email" => "tiago.fernandes@pontomais.com.br"
-                "email_verified" => true
-                "locale" => "pt-BR"
-                "hd" => "pontomais.com.br"
-                "id" => "114623339790769105709"
-                "verified_email" => true
-                "link" => "https://plus.google.com/114623339790769105709"
-            ]
-            +"avatar_original": "https://lh3.googleusercontent.com/a-/AOh14GhfrhDq7ZZXKh7uOpT8WrklbHKpXDx39JljtnV2=s96-c"
-            }
-        */
+        $social_user = Socialite::driver('google')->stateless()->user();
+
+        if(!$social_user || $social_user->email == null || ($social_user->user['hd'] ?? '') != "pontomais.com.br")
+        {
+            return redirect()->route('login')->with('error', __('auth.social_login.invalid_login'));
+        }
+
+        $request->session()->put('user-avatar', $social_user->avatar ?? asset('images/generic-avatar.png'));
+
+        $user = User::where('email', $social_user->email)->first();
+
+        if ($user)
+        {
+            auth()->login($user);
+            return redirect()->route('dashboard.index')->with(
+                'success',
+                __('auth.social_login.login_success', ['provider' => 'Google'])
+            );
+        } else
+        {
+            $user = User::create([
+                'name' => $social_user->name,
+                'email' => $social_user->email,
+                'password' => bcrypt(Str::random(10)),
+            ]);
+            auth()->login($user);
+            return redirect()->route('dashboard.index')->with(
+                'success',
+                __('auth.social_login.registration_success', ['provider' => 'Google'])
+            );
+        }
     }
 }

@@ -100,5 +100,9 @@
     "You": "Você",
     "you": "você",
     "All": "Todos",
-    "all": "todos"
+    "all": "todos",
+    "Error": "Erro",
+    "Info": "Info",
+    "Success": "Sucesso",
+    "Warning": "Alerta"
 }

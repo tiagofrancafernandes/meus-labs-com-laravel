@@ -69,9 +69,9 @@
                             height="22">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">My profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="#">@lang('Profile')</a></li>
+                        <li><a class="dropdown-item" href="#">@lang('Settings')</a></li>
+                        <li><a class="dropdown-item" href="@route('logout')">@lang('Logout')</a></li>
                     </ul>
                 </li>
             </ul>

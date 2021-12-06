@@ -18,6 +18,7 @@
     {{-- <link rel="stylesheet"
         href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb5/3.10.1/compiled.min.css"> --}}
     <link rel="stylesheet" href="@asset('css/app.css')">
+    <link rel="stylesheet" href="@asset('vendor/toastr/toastr.min.css')">
     <style>
         body {
             scroll-behavior: smooth;
@@ -205,50 +206,89 @@
     @yield('base-content')
 
     <script type="text/javascript" src="@asset('js/app.js')"></script>
+    <script type="text/javascript" src="@asset('vendor/toastr/toastr.min.js')"></script>
     <script type="text/javascript" src="@asset('vendor/chart.js/2.9.4/dist/Chart.min.js')"></script>
     <script type="text/javascript">
         {// Graph
-        var ctx = document.getElementById("myChart");
+            var ctx = document.getElementById("myChart");
 
-        var myChart = new Chart(ctx, {
-            type: "line",
-            data: {
-            labels: [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-            ],
-            datasets: [
-                {
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: "transparent",
-                borderColor: "#007bff",
-                borderWidth: 4,
-                pointBackgroundColor: "#007bff",
-                },
-            ],
-            },
-            options: {
-            scales: {
-                yAxes: [
-                {
-                    ticks: {
-                    beginAtZero: false,
-                    },
-                },
+            var myChart = ctx ? new Chart(ctx, {
+                type: "line",
+                data: {
+                labels: [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
                 ],
-            },
-            legend: {
-                display: false,
-            },
-            },
-        });
+                datasets: [
+                    {
+                    data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                    lineTension: 0,
+                    backgroundColor: "transparent",
+                    borderColor: "#007bff",
+                    borderWidth: 4,
+                    pointBackgroundColor: "#007bff",
+                    },
+                ],
+                },
+                options: {
+                scales: {
+                    yAxes: [
+                    {
+                        ticks: {
+                        beginAtZero: false,
+                        },
+                    },
+                    ],
+                },
+                legend: {
+                    display: false,
+                },
+                },
+            }) : '';
         }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "3000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+            @if(\Session::has('error'))
+            toastr["error"]("{{ \Session::get('error') }}")
+            @endif
+
+            @if(\Session::has('info'))
+            toastr["info"]("{{ \Session::get('info') }}")
+            @endif
+
+            @if(\Session::has('success'))
+            toastr["success"]("{{ \Session::get('success') }}")
+            @endif
+
+            @if(\Session::has('warning'))
+            toastr["warning"]("{{ \Session::get('warning') }}")
+            @endif
+        });
     </script>
 
 @yield('app-body-content')
